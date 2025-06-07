@@ -11,9 +11,9 @@ export const MarketOverview = () => {
   ];
 
   return (
-    <Card>
+    <Card className="bg-white border border-gray-200">
       <CardHeader>
-        <CardTitle className="flex items-center justify-between">
+        <CardTitle className="flex items-center justify-between text-black">
           Market Overview
           <Badge variant="secondary" className="bg-green-100 text-green-800">
             Markets Open
@@ -22,13 +22,13 @@ export const MarketOverview = () => {
       </CardHeader>
       <CardContent className="space-y-4">
         {marketData.map((item) => (
-          <div key={item.symbol} className="flex items-center justify-between p-3 rounded-lg bg-accent/50">
+          <div key={item.symbol} className="flex items-center justify-between p-3 rounded-lg bg-white border border-gray-100">
             <div className="flex flex-col">
-              <span className="font-medium text-foreground">{item.symbol}</span>
-              <span className="text-sm text-muted-foreground">Real-time</span>
+              <span className="font-medium text-black">{item.symbol}</span>
+              <span className="text-sm text-gray-600">Real-time</span>
             </div>
             <div className="text-right">
-              <div className="font-bold text-lg">{item.value}</div>
+              <div className="font-bold text-lg text-black">{item.value}</div>
               <div className={`text-sm font-medium ${
                 item.trend === 'up' ? 'text-green-600' : 'text-red-600'
               }`}>
@@ -38,9 +38,9 @@ export const MarketOverview = () => {
           </div>
         ))}
         
-        <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-          <h4 className="font-semibold text-blue-900 mb-2">Fed Model Analysis</h4>
-          <p className="text-sm text-blue-800">
+        <div className="mt-4 p-3 bg-white rounded-lg border border-gray-200">
+          <h4 className="font-semibold text-black mb-2">Fed Model Analysis</h4>
+          <p className="text-sm text-gray-700">
             Current earnings yield (2.1%) vs 10Y Treasury (4.15%) suggests market overvaluation. 
             <span className="font-medium"> Risk Level: Moderate</span>
           </p>

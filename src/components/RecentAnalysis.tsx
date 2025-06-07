@@ -44,7 +44,7 @@ export const RecentAnalysis = () => {
       case 'completed':
         return <Badge className="bg-green-100 text-green-800">Completed</Badge>;
       case 'processing':
-        return <Badge className="bg-yellow-100 text-yellow-800">Processing</Badge>;
+        return <Badge className="bg-gray-100 text-gray-800">Processing</Badge>;
       default:
         return <Badge variant="secondary">Unknown</Badge>;
     }
@@ -57,31 +57,31 @@ export const RecentAnalysis = () => {
   };
 
   return (
-    <Card>
+    <Card className="bg-white border border-gray-200">
       <CardHeader>
-        <CardTitle className="flex items-center justify-between">
+        <CardTitle className="flex items-center justify-between text-black">
           Recent Analysis
-          <Button variant="outline" size="sm">View All</Button>
+          <Button variant="outline" size="sm" className="border-gray-300 text-gray-700">View All</Button>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         {recentReports.map((report) => (
-          <div key={report.id} className="p-4 rounded-lg border border-border hover:bg-accent/50 transition-colors cursor-pointer">
+          <div key={report.id} className="p-4 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 transition-colors cursor-pointer">
             <div className="flex items-start justify-between mb-2">
-              <h4 className="font-medium text-foreground">{report.title}</h4>
+              <h4 className="font-medium text-black">{report.title}</h4>
               {getStatusBadge(report.status)}
             </div>
             
             <div className="flex items-center justify-between text-sm">
-              <span className="text-muted-foreground">{report.timestamp}</span>
+              <span className="text-gray-600">{report.timestamp}</span>
               <div className="flex items-center space-x-2">
                 {getRedFlagBadge(report.redFlags)}
               </div>
             </div>
             
             <div className="mt-2">
-              <span className="text-xs text-muted-foreground">Recommendation: </span>
-              <span className="text-sm font-medium">{report.recommendation}</span>
+              <span className="text-xs text-gray-600">Recommendation: </span>
+              <span className="text-sm font-medium text-black">{report.recommendation}</span>
             </div>
           </div>
         ))}
