@@ -72,7 +72,7 @@ export const Reports = () => {
       case 'completed':
         return <Badge className="bg-green-100 text-green-800">Completed</Badge>;
       case 'processing':
-        return <Badge className="bg-yellow-100 text-yellow-800">Processing</Badge>;
+        return <Badge className="bg-gray-100 text-gray-800">Processing</Badge>;
       default:
         return <Badge variant="secondary">Unknown</Badge>;
     }
@@ -106,107 +106,109 @@ export const Reports = () => {
   );
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-foreground">Analysis Reports</h1>
-          <p className="text-muted-foreground">
-            View and manage all investment analysis reports
-          </p>
-        </div>
-        <Button className="financial-gradient text-white">
-          <Download className="w-4 h-4 mr-2" />
-          Export All
-        </Button>
-      </div>
-
-      {/* Search and Filters */}
-      <Card>
-        <CardContent className="pt-6">
-          <div className="flex items-center space-x-4">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <Input
-                placeholder="Search reports, analysts, or types..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
-              />
-            </div>
-            <Button variant="outline">
-              <Calendar className="w-4 h-4 mr-2" />
-              Date Range
-            </Button>
-            <Button variant="outline">
-              Filter by Type
-            </Button>
+    <div className="min-h-screen bg-white">
+      <div className="space-y-6 p-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-black">Analysis Reports</h1>
+            <p className="text-gray-600">
+              View and manage all investment analysis reports
+            </p>
           </div>
-        </CardContent>
-      </Card>
+          <Button className="robinhood-button">
+            <Download className="w-4 h-4 mr-2" />
+            Export All
+          </Button>
+        </div>
 
-      {/* Reports List */}
-      <div className="space-y-4">
-        {filteredReports.map((report) => (
-          <Card key={report.id} className="hover:shadow-md transition-shadow">
-            <CardContent className="pt-6">
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-lg font-semibold text-foreground">{report.title}</h3>
-                    {getStatusBadge(report.status)}
-                  </div>
-                  
-                  <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-3">
-                    <span className="font-medium">{report.type}</span>
-                    <span>•</span>
-                    <span>{report.date}</span>
-                    <span>•</span>
-                    <span>Analyst: {report.analyst}</span>
-                  </div>
-
-                  <div className="flex items-center space-x-4 mb-3">
-                    {getRedFlagBadge(report.redFlags)}
-                    <Badge className={getRecommendationColor(report.recommendation)}>
-                      {report.recommendation}
-                    </Badge>
-                  </div>
-
-                  <div className="flex items-center space-x-2">
-                    <span className="text-sm text-muted-foreground">Models used:</span>
-                    {report.models.map((model, index) => (
-                      <Badge key={index} variant="outline" className="text-xs">
-                        {model}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex flex-col space-y-2 ml-6">
-                  <Button size="sm" variant="outline">
-                    View Details
-                  </Button>
-                  {report.status === 'completed' && (
-                    <Button size="sm" variant="ghost">
-                      <Download className="w-4 h-4" />
-                    </Button>
-                  )}
-                </div>
+        {/* Search and Filters */}
+        <Card className="bg-white border border-gray-200">
+          <CardContent className="pt-6">
+            <div className="flex items-center space-x-4">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-600" />
+                <Input
+                  placeholder="Search reports, analysts, or types..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 bg-white border-gray-300"
+                />
               </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      {filteredReports.length === 0 && (
-        <Card>
-          <CardContent className="text-center py-12">
-            <p className="text-muted-foreground">No reports found matching your search criteria.</p>
-            <Button variant="outline" className="mt-4" onClick={() => setSearchTerm("")}>
-              Clear Search
-            </Button>
+              <Button variant="outline" className="border-gray-300 text-gray-700">
+                <Calendar className="w-4 h-4 mr-2" />
+                Date Range
+              </Button>
+              <Button variant="outline" className="border-gray-300 text-gray-700">
+                Filter by Type
+              </Button>
+            </div>
           </CardContent>
         </Card>
-      )}
+
+        {/* Reports List */}
+        <div className="space-y-4">
+          {filteredReports.map((report) => (
+            <Card key={report.id} className="bg-white border border-gray-200 hover:shadow-md transition-shadow">
+              <CardContent className="pt-6">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <h3 className="text-lg font-semibold text-black">{report.title}</h3>
+                      {getStatusBadge(report.status)}
+                    </div>
+                    
+                    <div className="flex items-center space-x-4 text-sm text-gray-600 mb-3">
+                      <span className="font-medium">{report.type}</span>
+                      <span>•</span>
+                      <span>{report.date}</span>
+                      <span>•</span>
+                      <span>Analyst: {report.analyst}</span>
+                    </div>
+
+                    <div className="flex items-center space-x-4 mb-3">
+                      {getRedFlagBadge(report.redFlags)}
+                      <Badge className={getRecommendationColor(report.recommendation)}>
+                        {report.recommendation}
+                      </Badge>
+                    </div>
+
+                    <div className="flex items-center space-x-2">
+                      <span className="text-sm text-gray-600">Models used:</span>
+                      {report.models.map((model, index) => (
+                        <Badge key={index} variant="outline" className="text-xs border-gray-300 text-gray-700">
+                          {model}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col space-y-2 ml-6">
+                    <Button size="sm" variant="outline" className="border-gray-300 text-gray-700">
+                      View Details
+                    </Button>
+                    {report.status === 'completed' && (
+                      <Button size="sm" variant="ghost" className="text-gray-700">
+                        <Download className="w-4 h-4" />
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {filteredReports.length === 0 && (
+          <Card className="bg-white border border-gray-200">
+            <CardContent className="text-center py-12">
+              <p className="text-gray-600">No reports found matching your search criteria.</p>
+              <Button variant="outline" className="mt-4 border-gray-300 text-gray-700" onClick={() => setSearchTerm("")}>
+                Clear Search
+              </Button>
+            </CardContent>
+          </Card>
+        )}
+      </div>
     </div>
   );
 };
