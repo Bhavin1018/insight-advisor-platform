@@ -2,10 +2,10 @@
 import { ViewType } from "@/pages/Index";
 import { 
   Book, 
-  Chart, 
+  BarChart3, 
   File, 
   Folder, 
-  Trending 
+  TrendingUp 
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -16,10 +16,10 @@ interface SidebarProps {
 }
 
 const menuItems = [
-  { id: 'dashboard' as ViewType, label: 'Dashboard', icon: Chart },
+  { id: 'dashboard' as ViewType, label: 'Dashboard', icon: BarChart3 },
   { id: 'upload' as ViewType, label: 'Document Upload', icon: File },
   { id: 'models' as ViewType, label: 'Financial Models', icon: Book },
-  { id: 'trends' as ViewType, label: 'Market Trends', icon: Trending },
+  { id: 'trends' as ViewType, label: 'Market Trends', icon: TrendingUp },
   { id: 'reports' as ViewType, label: 'Analysis Reports', icon: Folder },
 ];
 
