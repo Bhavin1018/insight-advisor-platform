@@ -4,10 +4,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Download, Calendar } from "lucide-react";
+import { Search, Download, Calendar, ArrowLeft } from "lucide-react";
+import { DetailedReport } from "./DetailedReport";
 
 export const Reports = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedReport, setSelectedReport] = useState<string | null>(null);
 
   const reports = [
     {
@@ -105,6 +107,25 @@ export const Reports = () => {
     report.analyst.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Show detailed report if one is selected
+  if (selectedReport) {
+    return (
+      <div className="min-h-screen bg-white">
+        <div className="p-6 bg-white">
+          <Button 
+            variant="outline" 
+            className="mb-6 border-gray-300 text-gray-700"
+            onClick={() => setSelectedReport(null)}
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Reports
+          </Button>
+          <DetailedReport reportId={selectedReport} />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <div className="space-y-6 p-6 bg-white">
@@ -183,7 +204,12 @@ export const Reports = () => {
                   </div>
 
                   <div className="flex flex-col space-y-2 ml-6">
-                    <Button size="sm" variant="outline" className="border-gray-300 text-gray-700">
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="border-gray-300 text-gray-700"
+                      onClick={() => setSelectedReport(`report_${report.id}`)}
+                    >
                       View Details
                     </Button>
                     {report.status === 'completed' && (

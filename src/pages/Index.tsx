@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Sidebar } from "@/components/Sidebar";
 import { Dashboard } from "@/components/Dashboard";
 import { DocumentUpload } from "@/components/DocumentUpload";
+import { DetailedReport } from "@/components/DetailedReport";
 import { ModelAnalysis } from "@/components/ModelAnalysis";
 import { MarketTrends } from "@/components/MarketTrends";
 import { Reports } from "@/components/Reports";
@@ -13,13 +14,17 @@ export type ViewType = 'dashboard' | 'upload' | 'models' | 'trends' | 'reports';
 const Index = () => {
   const [currentView, setCurrentView] = useState<ViewType>('dashboard');
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [selectedReport, setSelectedReport] = useState<string | null>(null);
 
   const renderContent = () => {
     switch (currentView) {
       case 'dashboard':
         return <Dashboard />;
       case 'upload':
-        return <DocumentUpload />;
+        return <DocumentUpload onViewReport={(reportId) => {
+          setSelectedReport(reportId);
+          setCurrentView('reports');
+        }} />;
       case 'models':
         return <ModelAnalysis />;
       case 'trends':

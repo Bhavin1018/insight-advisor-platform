@@ -4,15 +4,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { File, Upload, Check, X } from "lucide-react";
+import { File, Upload, Check, X, Eye, Download } from "lucide-react";
 
-export const DocumentUpload = () => {
+interface DocumentUploadProps {
+  onViewReport?: (reportId: string) => void;
+}
+
+export const DocumentUpload = ({ onViewReport }: DocumentUploadProps) => {
   const [files, setFiles] = useState<Array<{
     id: string;
     name: string;
     size: string;
     status: 'uploading' | 'analyzing' | 'completed' | 'error';
     progress: number;
+    reportId?: string;
   }>>([]);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,7 +44,7 @@ export const DocumentUpload = () => {
               return { ...f, status: 'analyzing' };
             } else if (f.status === 'analyzing') {
               clearInterval(interval);
-              return { ...f, status: 'completed', progress: 100 };
+              return { ...f, status: 'completed', progress: 100, reportId: `report_${f.id}` };
             }
           }
           return f;
@@ -141,9 +146,20 @@ export const DocumentUpload = () => {
                   </div>
                   
                   {file.status === 'completed' && (
-                    <Button variant="outline" size="sm">
-                      View Analysis
-                    </Button>
+                    <div className="flex space-x-2">
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => file.reportId && onViewReport?.(file.reportId)}
+                      >
+                        <Eye className="w-4 h-4 mr-1" />
+                        View Report
+                      </Button>
+                      <Button variant="outline" size="sm">
+                        <Download className="w-4 h-4 mr-1" />
+                        PDF
+                      </Button>
+                    </div>
                   )}
                 </div>
               ))}
