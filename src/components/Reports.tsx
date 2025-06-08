@@ -91,7 +91,7 @@ export const Reports = () => {
       case 'Buy':
         return 'text-green-600 bg-green-50';
       case 'Hold with Caution':
-        return 'text-yellow-700 bg-yellow-100';
+        return 'text-gray-700 bg-white border border-gray-300';
       case 'Sell':
         return 'text-red-700 bg-red-100';
       default:
@@ -107,7 +107,7 @@ export const Reports = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="space-y-6 p-6">
+      <div className="space-y-6 p-6 bg-white">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-black">Analysis Reports</h1>

@@ -110,7 +110,7 @@ export const ModelAnalysis = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="space-y-6 p-6">
+      <div className="space-y-6 p-6 bg-white">
         <div>
           <h1 className="text-3xl font-bold text-black">Financial Models</h1>
           <p className="text-gray-600">
@@ -119,7 +119,7 @@ export const ModelAnalysis = () => {
         </div>
 
         <Tabs value={selectedModel} onValueChange={setSelectedModel}>
-          <TabsList className="grid w-full grid-cols-4 bg-gray-100">
+          <TabsList className="grid w-full grid-cols-4 bg-gray-200">
             {models.map((model) => (
               <TabsTrigger key={model.id} value={model.id} className="text-xs">
                 {model.name.split(' ')[0]}
@@ -167,7 +167,7 @@ export const ModelAnalysis = () => {
                       <Badge className={`${
                         selectedAnalysis.confidence === 'High' 
                           ? 'bg-green-100 text-green-800' 
-                          : 'bg-yellow-100 text-yellow-800'
+                          : 'bg-white text-gray-800 border border-gray-300'
                       }`}>
                         {selectedAnalysis.confidence} Confidence
                       </Badge>

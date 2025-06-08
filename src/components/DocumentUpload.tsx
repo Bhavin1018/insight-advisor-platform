@@ -64,7 +64,7 @@ export const DocumentUpload = () => {
       case 'uploading':
         return <Badge className="bg-blue-100 text-blue-800">Uploading</Badge>;
       case 'analyzing':
-        return <Badge className="bg-yellow-100 text-yellow-800">Analyzing</Badge>;
+        return <Badge className="bg-white text-gray-800 border border-gray-300">Analyzing</Badge>;
       case 'completed':
         return <Badge className="bg-green-100 text-green-800">Completed</Badge>;
       case 'error':
@@ -75,24 +75,24 @@ export const DocumentUpload = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-white">
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Document Upload</h1>
-        <p className="text-muted-foreground">
+        <h1 className="text-3xl font-bold text-black">Document Upload</h1>
+        <p className="text-gray-600">
           Upload investment reports and summaries for automated analysis
         </p>
       </div>
 
       {/* Upload Zone */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Upload Investment Documents</CardTitle>
+      <Card className="bg-white border border-gray-200">
+        <CardHeader className="bg-white">
+          <CardTitle className="text-black">Upload Investment Documents</CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="border-2 border-dashed border-border rounded-lg p-8 text-center hover:border-primary/50 transition-colors">
-            <Upload className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Drag and drop files here</h3>
-            <p className="text-muted-foreground mb-4">
+        <CardContent className="bg-white">
+          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-green-500 transition-colors bg-white">
+            <Upload className="w-12 h-12 text-gray-600 mx-auto mb-4" />
+            <h3 className="text-lg font-semibold mb-2 text-black">Drag and drop files here</h3>
+            <p className="text-gray-600 mb-4">
               or click to browse files (PDF, Word, Excel - Max 50MB)
             </p>
             <input
@@ -114,24 +114,24 @@ export const DocumentUpload = () => {
 
       {/* File List */}
       {files.length > 0 && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Processing Queue</CardTitle>
+        <Card className="bg-white border border-gray-200">
+          <CardHeader className="bg-white">
+            <CardTitle className="text-black">Processing Queue</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="bg-white">
             <div className="space-y-4">
               {files.map((file) => (
-                <div key={file.id} className="flex items-center space-x-4 p-4 rounded-lg border border-border">
+                                  <div key={file.id} className="flex items-center space-x-4 p-4 rounded-lg border border-gray-200 bg-white">
                   {getStatusIcon(file.status)}
                   
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-medium">{file.name}</span>
+                      <span className="font-medium text-black">{file.name}</span>
                       {getStatusBadge(file.status)}
                     </div>
                     
                     <div className="flex items-center space-x-4">
-                      <span className="text-sm text-muted-foreground">{file.size}</span>
+                      <span className="text-sm text-gray-600">{file.size}</span>
                       {(file.status === 'uploading' || file.status === 'analyzing') && (
                         <div className="flex-1 max-w-xs">
                           <Progress value={file.progress} className="h-2" />
@@ -153,15 +153,15 @@ export const DocumentUpload = () => {
       )}
 
       {/* Upload Guidelines */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Upload Guidelines</CardTitle>
+      <Card className="bg-white border border-gray-200">
+        <CardHeader className="bg-white">
+          <CardTitle className="text-black">Upload Guidelines</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="bg-white">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h4 className="font-semibold text-foreground mb-3">Supported Formats</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <h4 className="font-semibold text-black mb-3">Supported Formats</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                   <span>PDF documents (.pdf)</span>
@@ -182,8 +182,8 @@ export const DocumentUpload = () => {
             </div>
             
             <div>
-              <h4 className="font-semibold text-foreground mb-3">Best Practices</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <h4 className="font-semibold text-black mb-3">Best Practices</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Ensure documents contain financial metrics</li>
                 <li>• Include executive summaries when available</li>
                 <li>• Verify document quality for OCR scanning</li>

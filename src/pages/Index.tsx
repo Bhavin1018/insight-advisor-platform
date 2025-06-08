@@ -45,10 +45,10 @@ const Index = () => {
           isOpen={sidebarOpen}
         />
         
-        <main className={`flex-1 transition-all duration-300 ${
+        <main className={`flex-1 transition-all duration-300 bg-white ${
           sidebarOpen ? 'ml-64' : 'ml-16'
         }`}>
-          <div className="p-6">
+          <div className="p-6 bg-white">
             {renderContent()}
           </div>
         </main>

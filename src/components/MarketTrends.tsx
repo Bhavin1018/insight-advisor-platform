@@ -44,7 +44,7 @@ export const MarketTrends = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="space-y-6 p-6">
+      <div className="space-y-6 p-6 bg-white">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-black">Market Trends</h1>
@@ -58,7 +58,7 @@ export const MarketTrends = () => {
         </div>
 
         <Tabs defaultValue="sectors" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3 bg-gray-100">
+          <TabsList className="grid w-full grid-cols-3 bg-gray-200">
             <TabsTrigger value="sectors">Sector Analysis</TabsTrigger>
             <TabsTrigger value="economic">Economic Indicators</TabsTrigger>
             <TabsTrigger value="signals">Market Signals</TabsTrigger>
@@ -147,7 +147,7 @@ export const MarketTrends = () => {
                           <Badge className={`${
                             indicator.impact === 'Positive' ? 'bg-green-100 text-green-800' :
                             indicator.impact === 'Negative' ? 'bg-red-100 text-red-800' :
-                            'bg-yellow-100 text-yellow-800'
+                            'bg-white text-gray-800 border border-gray-300'
                           }`}>
                             {indicator.impact}
                           </Badge>
@@ -170,9 +170,9 @@ export const MarketTrends = () => {
                     </p>
                   </div>
                   
-                  <div className="p-4 rounded-lg bg-yellow-50 border border-yellow-200">
-                    <h4 className="font-semibold text-yellow-800 mb-2">Federal Reserve Outlook</h4>
-                    <p className="text-sm text-yellow-700">
+                  <div className="p-4 rounded-lg bg-white border border-gray-300">
+                    <h4 className="font-semibold text-gray-800 mb-2">Federal Reserve Outlook</h4>
+                    <p className="text-sm text-gray-700">
                       Fed likely to maintain current rates through Q2 2024, watching inflation data
                     </p>
                   </div>
@@ -201,7 +201,7 @@ export const MarketTrends = () => {
                         <h4 className="font-semibold text-black">{signal.signal}</h4>
                         <Badge className={`${
                           signal.strength === 'Strong' ? 'bg-green-100 text-green-800' :
-                          signal.strength === 'Moderate' ? 'bg-yellow-100 text-yellow-800' :
+                          signal.strength === 'Moderate' ? 'bg-white text-gray-800 border border-gray-300' :
                           'bg-gray-100 text-gray-800'
                         }`}>
                           {signal.strength}

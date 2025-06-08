@@ -9,7 +9,7 @@ import { ModelPerformance } from "@/components/ModelPerformance";
 export const Dashboard = () => {
   return (
     <div className="min-h-screen bg-white">
-      <div className="space-y-8 p-6">
+      <div className="space-y-8 p-6 bg-white">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-black">Dashboard</h1>
