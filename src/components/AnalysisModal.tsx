@@ -133,7 +133,7 @@ export const AnalysisModal = () => {
                         <FileText className="w-4 h-4" />
                         <span>{portfolio.name}</span>
                         <Badge variant="outline" className="ml-2">
-                          {portfolio.totalValue}
+                          ${portfolio.total_value?.toLocaleString() || '0'}
                         </Badge>
                       </div>
                     </SelectItem>

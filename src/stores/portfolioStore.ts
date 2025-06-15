@@ -20,6 +20,7 @@ interface PortfolioState {
   updatePortfolio: (id: string, updates: Partial<Portfolio>) => Promise<void>;
   deletePortfolio: (id: string) => Promise<void>;
   selectPortfolio: (id: string) => void;
+  setSelectedPortfolio: (id: string) => void;
   getPortfolioById: (id: string) => PortfolioWithHoldings | undefined;
 }
 
@@ -125,6 +126,10 @@ export const usePortfolioStore = create<PortfolioState>((set, get) => ({
   },
 
   selectPortfolio: (id: string) => {
+    set({ selectedPortfolio: id });
+  },
+
+  setSelectedPortfolio: (id: string) => {
     set({ selectedPortfolio: id });
   },
 
