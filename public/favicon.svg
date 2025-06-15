@@ -1,0 +1,21 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="15" fill="#059669" stroke="#047857" stroke-width="2"/>
+  
+  <!-- Chart bars -->
+  <rect x="7" y="20" width="2" height="6" fill="white"/>
+  <rect x="10" y="16" width="2" height="10" fill="white"/>
+  <rect x="13" y="12" width="2" height="14" fill="white"/>
+  <rect x="16" y="14" width="2" height="12" fill="white"/>
+  <rect x="19" y="10" width="2" height="16" fill="white"/>
+  <rect x="22" y="8" width="2" height="18" fill="white"/>
+  
+  <!-- Trend line -->
+  <path d="M6 22 L10 18 L14 14 L18 16 L22 10 L26 8" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- Small circle indicators on the trend line -->
+  <circle cx="10" cy="18" r="1" fill="white"/>
+  <circle cx="14" cy="14" r="1" fill="white"/>
+  <circle cx="18" cy="16" r="1" fill="white"/>
+  <circle cx="22" cy="10" r="1" fill="white"/>
+</svg> 
