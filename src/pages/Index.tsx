@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Sidebar } from "@/components/Sidebar";
@@ -19,7 +18,7 @@ const Index = () => {
   const renderContent = () => {
     switch (currentView) {
       case 'dashboard':
-        return <Dashboard />;
+        return <Dashboard setCurrentView={setCurrentView} />;
       case 'upload':
         return <DocumentUpload onViewReport={(reportId) => {
           setSelectedReport(reportId);
@@ -32,7 +31,7 @@ const Index = () => {
       case 'reports':
         return <Reports />;
       default:
-        return <Dashboard />;
+        return <Dashboard setCurrentView={setCurrentView} />;
     }
   };
 
