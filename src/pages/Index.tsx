@@ -1,4 +1,7 @@
+
 import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
+import { Auth } from "@/components/Auth";
 import { Header } from "@/components/Header";
 import { Sidebar } from "@/components/Sidebar";
 import { Dashboard } from "@/components/Dashboard";
@@ -11,9 +14,27 @@ import { Reports } from "@/components/Reports";
 export type ViewType = 'dashboard' | 'upload' | 'models' | 'trends' | 'reports';
 
 const Index = () => {
+  const { user, loading } = useAuth();
   const [currentView, setCurrentView] = useState<ViewType>('dashboard');
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [selectedReport, setSelectedReport] = useState<string | null>(null);
+
+  // Show loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary mx-auto"></div>
+          <p className="mt-4 text-lg">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Show auth page if not authenticated
+  if (!user) {
+    return <Auth />;
+  }
 
   const renderContent = () => {
     switch (currentView) {
